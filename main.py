@@ -259,11 +259,11 @@ class CustomCollector:
                 total_packets_sent_octo.add_metric([host.split(".")[0]], data[host]["total_packets_sent_octo"])
         yield total_packets_sent_octo
 
-        videostreams = GaugeMetricFamily("videostreams", "videostreams", labels=["instance"])
-        for host in self.hosts:
-            if data[host] != "error":
-                videostreams.add_metric([host.split(".")[0]], data[host]["videostreams"])
-        yield videostreams
+        #videostreams = GaugeMetricFamily("videostreams", "videostreams", labels=["instance"])
+        #for host in self.hosts:
+        #    if data[host] != "error":
+        #        videostreams.add_metric([host.split(".")[0]], data[host]["videostreams"])
+        #yield videostreams
 
         jitter_aggregate = GaugeMetricFamily("jitter_aggregate", "jitter_aggregate", labels=["instance"])
         for host in self.hosts:
