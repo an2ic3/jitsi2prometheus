@@ -155,11 +155,11 @@ class CustomCollector:
                 octo_receive_bitrate.add_metric([host.split(".")[0]], data[host]["octo_receive_bitrate"])
         yield octo_receive_bitrate
 
-        loss_rate_upload = GaugeMetricFamily("loss_rate_upload", "loss_rate_upload", labels=["instance"])
-        for host in self.hosts:
-            if data[host] != "error":
-                loss_rate_upload.add_metric([host.split(".")[0]], data[host]["loss_rate_upload"])
-        yield loss_rate_upload
+        #loss_rate_upload = GaugeMetricFamily("loss_rate_upload", "loss_rate_upload", labels=["instance"])
+        #for host in self.hosts:
+        #    if data[host] != "error":
+        #        loss_rate_upload.add_metric([host.split(".")[0]], data[host]["loss_rate_upload"])
+        #yield loss_rate_upload
 
         total_ice_succeeded = GaugeMetricFamily("total_ice_succeeded", "total_ice_succeeded", labels=["instance"])
         for host in self.hosts:
@@ -191,11 +191,11 @@ class CustomCollector:
                                                                 data[host]["total_data_channel_messages_received"])
         yield total_data_channel_messages_received
 
-        loss_rate_download = GaugeMetricFamily("loss_rate_download", "loss_rate_download", labels=["instance"])
-        for host in self.hosts:
-            if data[host] != "error":
-                loss_rate_download.add_metric([host.split(".")[0]], data[host]["loss_rate_download"])
-        yield loss_rate_download
+        #loss_rate_download = GaugeMetricFamily("loss_rate_download", "loss_rate_download", labels=["instance"])
+        #for host in self.hosts:
+        #    if data[host] != "error":
+        #        loss_rate_download.add_metric([host.split(".")[0]], data[host]["loss_rate_download"])
+        #yield loss_rate_download
 
         total_conference_seconds = GaugeMetricFamily("total_conference_seconds", "total_conference_seconds",
                                                      labels=["instance"])
@@ -381,11 +381,11 @@ class CustomCollector:
                 total_bytes_received.add_metric([host.split(".")[0]], data[host]["total_bytes_received"])
         yield total_bytes_received
 
-        rtp_loss = GaugeMetricFamily("rtp_loss", "rtp_loss", labels=["instance"])
-        for host in self.hosts:
-            if data[host] != "error":
-                rtp_loss.add_metric([host.split(".")[0]], data[host]["rtp_loss"])
-        yield rtp_loss
+        #rtp_loss = GaugeMetricFamily("rtp_loss", "rtp_loss", labels=["instance"])
+        #for host in self.hosts:
+        #    if data[host] != "error":
+        #        rtp_loss.add_metric([host.split(".")[0]], data[host]["rtp_loss"])
+        #yield rtp_loss
 
         total_loss_controlled_participant_seconds = GaugeMetricFamily("total_loss_controlled_participant_seconds",
                                                                       "total_loss_controlled_participant_seconds",
@@ -496,7 +496,7 @@ class CustomCollector:
 
 
 if __name__ == '__main__':
-    start_http_server(environ.get('HTTP_PORT', 8080))
+    start_http_server(int(environ.get('HTTP_PORT', 8080)))
     _hosts = environ.get('HOSTS')
     if _hosts:
         _hosts = tuple(_hosts.split(','))
